@@ -3,4 +3,4 @@ jQuery Pretext
 
 Add pretext labels to input fields.
 
-    $('input').pretext({ text: 'Username' });
+    $('input#username').pretext({ text: 'Username' });

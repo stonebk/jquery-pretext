@@ -1,6 +1,6 @@
 /*!
- * jQuery pretext by Brian Stone
- *     Description: Add pretext labels to input fields.
+ * jQuery Pretext - Add pretext labels to input fields.
+ *     https://github.com/stonebk/jquery-pretext
  */
 (function ($) {
     $.fn.pretext = function (options) {
