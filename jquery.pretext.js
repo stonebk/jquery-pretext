@@ -35,7 +35,7 @@
                 .blur(function () {
                     if ($this.val() === '') {
                         methods.enable($this, password, pretext);
-                    };
+                    }
                 })
                 .change(function () {
                     if ($this.val() === '') {
