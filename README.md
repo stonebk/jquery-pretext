@@ -3,6 +3,12 @@ jQuery Pretext
 
 Add pretext labels to input fields.
 
+### Demo
+
+http://stonebk.github.com/jquery-pretext/
+
+### Usage
+
     // HTML
     <label for="username">Username</label>
     <input type="text" id="username"></input>
