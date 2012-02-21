@@ -4,7 +4,7 @@
  */
 (function ($) {
     $.fn.pretext = function (options) {
-        var opts = $.extend({}, options), classname = 'pretext',
+        var classname = 'pretext',
             methods = {
                 enable: function ($this, password, pretext) {
                     $this.val(pretext).addClass(classname);
@@ -22,7 +22,9 @@
 
         return this.each(function () {
             var $this = $(this),
-                pretext = opts.text || $this.val(),
+                id = $(this).attr('id'),
+                label =  $('label[for="' + id + '"]').hide(),
+                pretext = label.text(),
                 password = $this.attr('type') === 'password';
 
             $this.addClass(classname).val(pretext)
