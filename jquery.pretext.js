@@ -40,7 +40,7 @@
                     }
                 })
                 .change(function () {
-                    if ($this.val() === '') {
+                    if ($this.val() === '' && !$this.is(':focus')) {
                         methods.enable($this, password, pretext);
                     } else {
                         methods.disable($this, password);
