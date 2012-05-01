@@ -41,6 +41,40 @@
      */
     $.Pretext.CLASSNAME = 'pretext';
 
+    /**
+     * The default style for the prefix elements.
+     * @type String
+     * @static
+     */
+    $.Pretext.STYLE = [
+        // Container CSS
+        '.', $.Pretext.CLASSNAME, '-container {',
+        'position: relative;',
+        'display: inline-block;',
+        '}',
+
+        // Label CSS
+        '.', $.Pretext.CLASSNAME, '{',
+        'position: absolute;',
+        'top: 0;',
+        'left: 0;',
+        'cursor: text;',
+        'color: #a9a9a9;',
+        'font-family: sans-serif;',
+        'font-size: 13.333px;',
+        '}'
+    ].join('');
+
+    /**
+     * Static init for the pretext object. Add CSS to the DOM.
+     * @static
+     */
+    $.Pretext.init = function () {
+        $(document.createElement('style'))
+            .text($.Pretext.STYLE)
+            .appendTo('head');
+    };
+
     // Extend the prototype
     $.Pretext.prototype = {
 
@@ -55,26 +89,12 @@
             // Initialize the pretext container
             this.$container
                 .addClass($.Pretext.CLASSNAME + '-container')
-                .css({
-                    position: 'relative',
-                    display: 'inline-block'
-                })
                 .insertAfter(this.$input)
                 .append(this.$input)
                 .append(this.$label);
 
             // Initialize the pretext label
-            this.$label
-                .addClass($.Pretext.CLASSNAME)
-                .css({
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    cursor: 'text',
-                    color: '#a9a9a9',
-                    'font-family': 'sans-serif',
-                    'font-size': 13.3333
-                });
+            this.$label.addClass($.Pretext.CLASSNAME);
 
             // Initialize the pretext state
             this.onChange();
@@ -107,5 +127,8 @@
             }
         });
     };
+
+    // Initialize the object
+    $.Pretext.init();
 
 }(jQuery));
