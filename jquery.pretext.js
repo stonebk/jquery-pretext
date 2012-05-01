@@ -73,6 +73,7 @@
         $(document.createElement('style'))
             .text($.Pretext.STYLE)
             .prependTo('head');
+        $.Pretext.initialized = true;
     };
 
     // Extend the prototype
@@ -117,6 +118,10 @@
 
     // Add "pretext" as a jquery plugin
     $.fn.pretext = function (options) {
+        // Initialize the object on first use
+        if (!$.Pretext.initialized) {
+            $.Pretext.init();
+        }
         return this.each(function () {
             var $this = $(this),
                 $label = $('label[for="' + $this.attr('id') + '"]');
@@ -127,8 +132,5 @@
             }
         });
     };
-
-    // Initialize the object
-    $.Pretext.init();
 
 }(jQuery));
