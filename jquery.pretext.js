@@ -3,49 +3,66 @@
  *     https://github.com/stonebk/jquery-pretext
  */
 (function ($) {
+
+    $.Pretext = function (input) {
+        this.input = input;
+        this.$input = $(input);
+        this.$label = $('label[for="' + this.$input.attr('id') + '"]').hide();
+        this.pretext = this.$label.text();
+        this.type = this.$input.attr('type');
+
+        this.init();
+    };
+
+    $.Pretext.CLASSNAME = 'pretext';
+
+    $.Pretext.prototype = {
+
+        init: function () {
+            this.$input
+                .focus($.proxy(this.onFocus, this))
+                .blur($.proxy(this.onBlur, this))
+                .change($.proxy(this.onChange, this));
+            this.onBlur();
+        },
+
+        onFocus: function () {
+            if (this.$input.hasClass($.Pretext.CLASSNAME)) {
+                this.hide();
+            }
+        },
+
+        onBlur: function () {
+            if (this.$input.val() === '') {
+                this.show();
+            }
+        },
+
+        onChange: function () {
+            if (this.$input.val() === '' && !this.$input.is(':focus')) {
+                this.show();
+            }
+        },
+
+        show: function () {
+            this.$input.val(this.pretext).addClass($.Pretext.CLASSNAME);
+            if (this.type === 'password') {
+                this.input.type = 'text';
+            }
+        },
+
+        hide: function () {
+            this.$input.val('').removeClass($.Pretext.CLASSNAME);
+            if (this.type === 'password') {
+                this.input.type = 'password';
+            }
+        }
+    };
+
     $.fn.pretext = function (options) {
-        var classname = 'pretext',
-            methods = {
-                enable: function ($this, password, pretext) {
-                    $this.val(pretext).addClass(classname);
-                    if (password) {
-                        $this.get(0).type = 'text';
-                    }
-                },
-                disable: function ($this, password) {
-                    $this.removeClass(classname);
-                    if (password) {
-                        $this.get(0).type = 'password';
-                    }
-                }
-            };
-
         return this.each(function () {
-            var $this = $(this),
-                id = $(this).attr('id'),
-                label =  $('label[for="' + id + '"]').hide(),
-                pretext = label.text(),
-                password = $this.attr('type') === 'password';
-
-            $this.addClass(classname).val(pretext)
-                .focus(function () {
-                    if ($this.hasClass(classname)) {
-                        $this.val('');
-                        methods.disable($this, password);
-                    }
-                })
-                .blur(function () {
-                    if ($this.val() === '') {
-                        methods.enable($this, password, pretext);
-                    }
-                })
-                .change(function () {
-                    if ($this.val() === '' && !$this.is(':focus')) {
-                        methods.enable($this, password, pretext);
-                    } else {
-                        methods.disable($this, password);
-                    }
-                }).get(0).type = 'text';
+            (new $.Pretext(this));
         });
     };
+
 }(jQuery));
