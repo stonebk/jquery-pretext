@@ -22,3 +22,6 @@ You need to manually trigger the change event if you are changing the value of
 the input field via JavaScript.
 
     $('input#username').val('').change();
+
+Browser input fields have different sizes for margins and padding. You need to
+position the labels based on the margins and padding you are using (see example).
