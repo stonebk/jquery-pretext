@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>jQuery Pretext Example</title>
+    <style>#pretext-example .pretext { top: 5px; left: 5px; }</style>
+    <!--[if IE]><style>#pretext-example .pretext { top: 3px; left: 3px; }</style><![endif]-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="jquery.pretext.js"></script>
     <script>
@@ -10,7 +12,7 @@
       });
     </script>
   </head>
-  <body>
+  <body id="pretext-example">
     <label for="username">Username</label>
     <input type="text" id="username"></input>
     <label for="password">Password</label>
