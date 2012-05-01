@@ -72,7 +72,7 @@
     $.Pretext.init = function () {
         $(document.createElement('style'))
             .text($.Pretext.STYLE)
-            .appendTo('head');
+            .prependTo('head');
     };
 
     // Extend the prototype
