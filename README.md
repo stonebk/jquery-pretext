@@ -1,7 +1,14 @@
 jQuery Pretext
 ==============
 
-Add pretext labels to input fields.
+The HTML5 placeholder attribute is implemented inconsistently across browsers --
+the goal behind jQuery Pretext is to give consistent placeholder behavior across
+all browsers while using semantic HTML. 
+
+###### Behavior
+
+Replicate chrome behavior -- show placeholder text until the input field has been
+given a value (other browsers will hide the placeholder text on focus).
 
 ### Demo
 
