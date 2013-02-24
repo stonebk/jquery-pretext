@@ -7,7 +7,7 @@
         "chrome",
         "input"
     ],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": {
         "name": "Brian Stone",
         "url": "https://github.com/stonebk"
@@ -21,6 +21,7 @@
     "bugs": "https://github.com/stonebk/jquery-pretext/issues",
     "homepage": "https://github.com/stonebk/jquery-pretext",
     "docs": "https://github.com/stonebk/jquery-pretext",
+    "demo": "http://stonebk.github.com/jquery-pretext/",
     "dependencies": {
         "jquery": ">=1.5"
     }
